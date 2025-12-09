@@ -37,10 +37,25 @@ Melakukan simulasi serangan **TCP Connect Scan** menggunakan Nmap sembari memant
     * **Open Port (Scenario: SSH & HTTP Active):** Wireshark menangkap proses **3-Way Handshake** lengkap (`SYN` → `SYN-ACK` → `ACK`).
     * **Closed Port (Scenario: Services Stopped):** Wireshark menangkap respons penolakan koneksi berupa paket **RST, ACK** (Reset) dari server.
 
-### Bukti Screenshot
-| Nmap Scan (Open) | Wireshark Analysis (Handshake) |
-| :---: | :---: |
-| ![Nmap Open](evidence/image_550277.png) | ![Wireshark](evidence/image_5502d3.jpg) |
+## 📸 Bukti Dokumentasi (Evidence)
+
+Berikut adalah dokumentasi langkah-langkah pengerjaan:
+
+### 1. Passive Reconnaissance (Target: Jabarprov)
+Analisis jejak digital menggunakan metode OSINT.
+
+| Google Dorking | GitHub Recon | Pencarian Karyawan/Email |
+| :---: | :---: | :---: |
+| ![Dorks](evidence/PassiveRecon/Google%20Dorks.png) | ![Github](evidence/PassiveRecon/Github.png) | ![Email](evidence/PassiveRecon/email1.png) |
+| *Pencarian File Sensitif* | *Pencarian Repositori* | *Enumerasi Data Publik* |
+
+### 2. Active Reconnaissance (Target: Localhost)
+Simulasi pemindaian port dan analisis paket jaringan.
+
+| Nmap Scan (Open Port) | Nmap Scan (Closed Port) | Wireshark (Handshake) |
+| :---: | :---: | :---: |
+| ![Nmap Open](evidence/ActiveRecon/Nmap1.png) | ![Nmap Closed](evidence/ActiveRecon/Nmap9.png) | ![Wireshark](evidence/ActiveRecon/Wireshark1.png) |
+| *Hasil Scan Layanan Aktif* | *Hasil Scan Layanan Mati* | *Analisis TCP 3-Way Handshake* |
 
 ---
 
