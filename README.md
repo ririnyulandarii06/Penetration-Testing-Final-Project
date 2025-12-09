@@ -37,32 +37,12 @@ Melakukan simulasi serangan **TCP Connect Scan** menggunakan Nmap sembari memant
     * **Open Port (Scenario: SSH & HTTP Active):** Wireshark menangkap proses **3-Way Handshake** lengkap (`SYN` → `SYN-ACK` → `ACK`).
     * **Closed Port (Scenario: Services Stopped):** Wireshark menangkap respons penolakan koneksi berupa paket **RST, ACK** (Reset) dari server.
 
-## 📸 Bukti Dokumentasi (Evidence)
-
-Berikut adalah dokumentasi langkah-langkah pengerjaan:
-
-### 1. Passive Reconnaissance (Target: Jabarprov)
-Analisis jejak digital menggunakan metode OSINT.
-
-| Google Dorking | GitHub Recon | Pencarian Karyawan/Email |
-| :---: | :---: | :---: |
-| ![Dorks](evidence/PassiveRecon/Google%20Dorks.png) | ![Github](evidence/PassiveRecon/Github.png) | ![Email](evidence/PassiveRecon/email1.png) |
-| *Pencarian File Sensitif* | *Pencarian Repositori* | *Enumerasi Data Publik* |
-
-### 2. Active Reconnaissance (Target: Localhost)
-Simulasi pemindaian port dan analisis paket jaringan.
-
-| Nmap Scan (Open Port) | Nmap Scan (Closed Port) | Wireshark (Handshake) |
-| :---: | :---: | :---: |
-| ![Nmap Open](evidence/ActiveRecon/Nmap1.png) | ![Nmap Closed](evidence/ActiveRecon/Nmap9.png) | ![Wireshark](evidence/ActiveRecon/Wireshark1.png) |
-| *Hasil Scan Layanan Aktif* | *Hasil Scan Layanan Mati* | *Analisis TCP 3-Way Handshake* |
-
 ---
 
 ## 📂 File Structure
-* `LAPORAN_Ririn_Yulandari.pdf`: Dokumen laporan lengkap berisi metodologi, bukti screenshot, dan analisis mendalam.
+* `LAPORAN_Ririn_Yulandari.pdf`: Dokumen laporan lengkap berisi metodologi, analisis mendalam, dan kesimpulan.
+* `evidence/`: Folder berisi kumpulan screenshot bukti dokumentasi (Nmap, Wireshark, & OSINT).
 * `README.md`: Ringkasan eksekutif proyek ini.
-* `evidence/` : Folder berisi gambar dokumentasi langkah-langkah pengerjaan.
 
 ---
 
