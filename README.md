@@ -49,7 +49,7 @@ Sesuai dengan ketentuan tugas besar, proyek ini dibagi menjadi dua tahapan:
 ---
 
 ## 📂 File Structure
-* `LAPORAN_Ririn_Yulandari.pdf`: **Laporan Utama.** Dokumen lengkap berisi pendahuluan, metodologi, analisis teknis per langkah, dan kesimpulan.
+* `LAPORAN_TUGAS.pdf`: **Laporan Utama.** Dokumen lengkap berisi pendahuluan, metodologi, analisis teknis per langkah, dan kesimpulan.
 * `evidence/`: Folder repositori bukti dokumentasi (*screenshot*) pengerjaan.
     * `PassiveRecon/`: Bukti OSINT (Google Dorks, GitHub).
     * `ActiveRecon/`: Bukti Nmap dan Wireshark.
