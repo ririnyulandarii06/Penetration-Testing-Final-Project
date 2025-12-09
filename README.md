@@ -60,7 +60,7 @@ Simulasi pemindaian port dan analisis paket jaringan.
 ---
 
 ## 📂 File Structure
-* `LAPORAN_Ririn Yulandari.pdf`: Dokumen laporan lengkap berisi metodologi, bukti screenshot, dan analisis mendalam.
+* `LAPORAN_Ririn_Yulandari.pdf`: Dokumen laporan lengkap berisi metodologi, bukti screenshot, dan analisis mendalam.
 * `README.md`: Ringkasan eksekutif proyek ini.
 * `evidence/` : Folder berisi gambar dokumentasi langkah-langkah pengerjaan.
 
