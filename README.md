@@ -6,45 +6,56 @@
 
 ---
 
-## 📄 Project Overview
-Repository ini berisi **Laporan Teknis Security Assessment** yang disusun sebagai Tugas Besar mata kuliah Keamanan Siber. Proyek ini mensimulasikan proses audit keamanan yang terbagi menjadi dua tahapan utama:
-1.  **Passive Reconnaissance (OSINT):** Pengumpulan informasi publik tanpa interaksi langsung.
-2.  **Active Reconnaissance (Lab Simulation):** Analisis protokol jaringan dan pemindaian port dalam lingkungan terkontrol.
+## 📄 Project Overview (Latar Belakang)
+Repository ini berisi **Laporan Teknis Security Assessment** yang disusun untuk memenuhi Tugas Besar mata kuliah Keamanan Siber. Proyek ini mensimulasikan proses audit keamanan yang komprehensif, dimulai dari pengumpulan informasi publik hingga analisis kerentanan teknis.
 
-## 🎯 Scope & Targets
-Proyek ini dilakukan dengan batasan etika yang ketat (*Ethical Hacking*):
+Tujuan utama proyek ini adalah:
+1.  Melakukan pemetaan aset digital (*footprinting*) pada target nyata.
+2.  Mengidentifikasi layanan dan menganalisis perilaku protokol jaringan dalam lingkungan terkontrol.
+3.  Mendokumentasikan temuan sebagai bahan evaluasi keamanan.
 
-| Type | Target | Description |
+## 🎯 Scope & Scenario (Skenario & Ruang Lingkup)
+Sesuai dengan ketentuan tugas besar, proyek ini dibagi menjadi dua tahapan:
+
+| Tahapan | Target | Deskripsi Skenario |
 | :--- | :--- | :--- |
-| **Passive Recon** | `jabarprov.go.id` | Pemerintah Provinsi Jawa Barat (Analisis Jejak Digital Publik) |
-| **Active Recon** | `Localhost / 192.168.131.39` | Laboratorium Lokal (Analisis Paket & Port Scanning) |
+| **1. Passive Reconnaissance** | `jabarprov.go.id` (Pemerintah) | **Skenario:** Bertindak sebagai konsultan keamanan yang melakukan audit jejak digital (*OSINT*) pada domain pemerintahan untuk mencari potensi kebocoran informasi (*Information Disclosure*) tanpa melakukan interaksi langsung dengan server target. |
+| **2. Active Reconnaissance** | `Localhost / 192.168.131.39` | **Skenario:** Mensimulasikan serangan internal pada lingkungan laboratorium (*Lab Simulation*) untuk menganalisis respons protokol TCP/IP saat terjadi pemindaian port (*Port Scanning*) pada layanan SSH dan HTTP. |
 
 ---
 
-## 🛠️ Methodology & Findings
+## 🛠️ Tools & Methodology
 
-### 1. Passive Reconnaissance (Information Disclosure)
-Menggunakan teknik **Google Dorking** dan **GitHub Recon** untuk mencari kebocoran data sensitif (seperti file `.sql`, `.env`, atau kredensial).
+### 1. Passive Reconnaissance Tools
+* **Google Dorks:** Digunakan untuk mencari file sensitif (`.sql`, `.env`, `.log`) yang terindeks mesin pencari.
+* **GitHub Search:** Digunakan untuk mencari kebocoran *source code* atau kredensial pada repositori publik.
+* **Whois & DNS Recon:** (Opsional) Untuk memetakan informasi pendaftaran domain.
 
-* **Tools:** Google Search Operators, GitHub Search.
-* **Result:** Target memiliki tingkat keamanan (*Digital Hygiene*) yang sangat baik. Tidak ditemukan file konfigurasi, backup database, atau kredensial yang terekspos secara publik. Konfigurasi `robots.txt` efektif mencegah pengindeksan data sensitif.
+### 2. Active Reconnaissance Tools
+* **Nmap:** Digunakan untuk *Network Discovery* dan *Port Scanning* (Teknik `-sT` Connect Scan).
+* **Wireshark:** Digunakan untuk *Packet Sniffing* guna memvalidasi proses *TCP 3-Way Handshake* (SYN, SYN-ACK, ACK).
 
-### 2. Active Reconnaissance (Network Protocol Analysis)
-Melakukan simulasi serangan **TCP Connect Scan** menggunakan Nmap sembari memantau lalu lintas jaringan menggunakan Wireshark untuk memahami perilaku protokol TCP/IP.
+---
 
-* **Tools:** Nmap (`-sT`), Wireshark (`loopback` interface).
-* **Analysis:**
-    * **Open Port (Scenario: SSH & HTTP Active):** Wireshark menangkap proses **3-Way Handshake** lengkap (`SYN` → `SYN-ACK` → `ACK`).
-    * **Closed Port (Scenario: Services Stopped):** Wireshark menangkap respons penolakan koneksi berupa paket **RST, ACK** (Reset) dari server.
+## 📊 Summary of Findings (Ringkasan Temuan)
+
+* **Digital Hygiene (Passive):** Target pemerintahan (`jabarprov.go.id`) menunjukkan postur keamanan yang baik. Tidak ditemukan kebocoran file konfigurasi kritis atau database di domain publik.
+* **Network Analysis (Active):** Berhasil memetakan perilaku protokol jaringan:
+    * **Open Port:** Terdeteksi melalui paket respons `[SYN, ACK]`.
+    * **Closed Port:** Terdeteksi melalui paket respons `[RST, ACK]` (Reset).
+
+*(Detail analisis lengkap dan bukti screenshot tersedia di dalam dokumen Laporan Akhir).*
 
 ---
 
 ## 📂 File Structure
-* `LAPORAN_Ririn_Yulandari.pdf`: Dokumen laporan lengkap berisi metodologi, analisis mendalam, dan kesimpulan.
-* `evidence/`: Folder berisi kumpulan screenshot bukti dokumentasi (Nmap, Wireshark, & OSINT).
-* `README.md`: Ringkasan eksekutif proyek ini.
+* `LAPORAN_Ririn_Yulandari.pdf`: **Laporan Utama.** Dokumen lengkap berisi pendahuluan, metodologi, analisis teknis per langkah, dan kesimpulan.
+* `evidence/`: Folder repositori bukti dokumentasi (*screenshot*) pengerjaan.
+    * `PassiveRecon/`: Bukti OSINT (Google Dorks, GitHub).
+    * `ActiveRecon/`: Bukti Nmap dan Wireshark.
+* `README.md`: Ringkasan eksekutif proyek (File ini).
 
 ---
 
 ## ⚠️ Disclaimer
-*Proyek ini dilakukan semata-mata untuk tujuan pendidikan (Educational Purposes). Penulis tidak bertanggung jawab atas penyalahgunaan informasi atau teknik yang didokumentasikan di sini. Seluruh aktivitas pemindaian aktif dilakukan di lingkungan laboratorium milik sendiri (Localhost).*
+*Proyek ini dilakukan semata-mata untuk tujuan pendidikan (Educational Purposes) dan memenuhi Tugas Besar. Penulis tidak bertanggung jawab atas penyalahgunaan informasi. Seluruh aktivitas pemindaian aktif dilakukan di lingkungan laboratorium milik sendiri (Localhost/Authorized Environment).*
